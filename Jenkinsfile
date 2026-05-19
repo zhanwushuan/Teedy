@@ -25,7 +25,7 @@ pipeline {
     stage('Compile') {
       steps {
         script {
-          runMaven('compile')
+          runMaven('install -DskipTests')
         }
       }
     }
