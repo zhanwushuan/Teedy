@@ -1,8 +1,8 @@
 def runMaven(String args) {
   if (isUnix()) {
-    sh "mvn ${args}"
+    sh "mvn -Dmaven.repo.local=.m2/repository ${args}"
   } else {
-    bat "mvn ${args}"
+    bat "mvn -Dmaven.repo.local=.m2/repository ${args}"
   }
 }
 
