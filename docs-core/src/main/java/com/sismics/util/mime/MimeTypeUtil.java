@@ -20,6 +20,14 @@ public class MimeTypeUtil {
      * @throws IOException e
      */
     public static String guessMimeType(Path file, String name) throws IOException {
+        // Check extension first for types the OS registry may misidentify (e.g. CSV→Excel on Windows)
+        if (name != null) {
+            String lower = name.toLowerCase();
+            if (lower.endsWith(".csv")) {
+                return MimeType.TEXT_CSV;
+            }
+        }
+
         String mimeType = Files.probeContentType(file);
 
         if (mimeType == null && name != null) {
