@@ -46,4 +46,13 @@ public abstract class BaseTest {
     protected static InputStream getSystemResourceAsStream(String fileName) {
         return ClassLoader.getSystemResourceAsStream("file/" + fileName);
     }
+
+    protected static boolean isTesseractAvailable() {
+        try {
+            Process p = new ProcessBuilder("tesseract", "--version").start();
+            return p.waitFor() == 0;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
