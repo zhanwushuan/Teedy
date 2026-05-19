@@ -9,6 +9,10 @@ def runMaven(String args) {
 pipeline {
   agent any
 
+  tools {
+    maven 'Maven'
+  }
+
   stages {
     stage('Clean') {
       steps {
